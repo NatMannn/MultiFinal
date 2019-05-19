@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en" style="text-align:center">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>I'm here Baby!!</title>
+    <style type="text/css">
+        body {
+            background-color: rgba(213, 243, 248, 0.795);
+        }
+
+        #reset {
+            left: 970px;
+            top: 570px;
+            font-size: 16px;
+            padding: 10px 25px 10px 25px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 12px;
+            position: absolute;
+            z-index: 2;
+            display: none;
+        }
+
+        #reset:hover {
+            background-color: #3e8e41
+        }
+
+        #playAgain {
+            left: 970px;
+            top: 570px;
+            font-size: 16px;
+            padding: 10px 25px 10px 25px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: rgb(63, 212, 192);
+            border: none;
+            border-radius: 12px;
+            position: absolute;
+            z-index: 2;
+            display: none;
+        }
+
+        #playAgain:hover {
+            background-color: rgb(40, 177, 159)
+        }
+    </style>
+    <script type="text/javascript" src="simpleGame.js"></script>
+    <script type="text/javascript">
+        var scene;
+        var bg;
+        var tBaby;
+        var baby;
+        var message;
+        var bear;
+        var mom;
+        var tree;
+        var score = 0;
+        var iceCream;
+        var girl;
+        var nam = 0;
+
+        function init() {
+            score = 0;
+           
+            scene = new Scene();
+            scene.setSize(900, 600);
+            bg = new Sprite(scene, "img/finish3.png", 900, 600); // ค่าเท่ากับ scene
+            bg.setSpeed(0);
+            bg.setPosition(450, 300); // ค่าครึ่งนึงของ scene 
+
+            baby = new Baby();
+            message = new Message();
+            bear = new Bear();
+            mom = new Mom();
+            girl = new Girl();
+
+            bLongHorizontal = new Sprite(scene, "img/empty.png", 120, 1);
+            bLongHorizontal.setSpeed(0);
+            bLongHorizontal.setPosition(70, 220);
+
+            bLongHorizontal1 = new Sprite(scene, "img/empty.png", 120, 1);
+            bLongHorizontal1.setSpeed(0);
+            bLongHorizontal1.setPosition(70, 380);
+
+            bLongHorizontal2 = new Sprite(scene, "img/empty.png", 50, 1);
+            bLongHorizontal2.setSpeed(0);
+            bLongHorizontal2.setPosition(40, 140);
+
+            bLongHorizontal3 = new Sprite(scene, "img/empty.png", 30, 1);
+            bLongHorizontal3.setSpeed(0);
+            bLongHorizontal3.setPosition(90, 20);
+
+            // ข้างบรรได ซ้าย
+            bLongHorizontal4 = new Sprite(scene, "img/empty.png", 20, 1);
+            bLongHorizontal4.setSpeed(0);
+            bLongHorizontal4.setPosition(155, 200);
+
+            // ข้างบรรได ขวา
+            bLongHorizontal5 = new Sprite(scene, "img/empty.png", 45, 1);
+            bLongHorizontal5.setSpeed(0);
+            bLongHorizontal5.setPosition(242, 190);
+
+            bLongHorizontal6 = new Sprite(scene, "img/empty.png", 45, 1);
+            bLongHorizontal6.setSpeed(0);
+            bLongHorizontal6.setPosition(360, 90);
+
+            bLongHorizontal7 = new Sprite(scene, "img/empty.png", 12, 1);
+            bLongHorizontal7.setSpeed(0);
+            bLongHorizontal7.setPosition(280, 160);
+
+            bLongHorizontal8 = new Sprite(scene, "img/empty.png", 12, 1);
+            bLongHorizontal8.setSpeed(0);
+            bLongHorizontal8.setPosition(280, 100);
+
+            bLongHorizontal9 = new Sprite(scene, "img/empty.png", 100, 1);
+            bLongHorizontal9.setSpeed(0);
+            bLongHorizontal9.setPosition(330, 220);
+
+            bLongHorizontal10 = new Sprite(scene, "img/empty.png", 150, 1);
+            bLongHorizontal10.setSpeed(0);
+            bLongHorizontal10.setPosition(530, 220);
+
+            //ทางเข้าแกะ
+            bLongHorizontal11 = new Sprite(scene, "img/empty.png", 45, 1);
+            bLongHorizontal11.setSpeed(0);
+            bLongHorizontal11.setPosition(420, 250);
+
+            //สะพาน บน
+            bLongHorizontal12 = new Sprite(scene, "img/empty.png", 230, 1);
+            bLongHorizontal12.setSpeed(0);
+            bLongHorizontal12.setPosition(662, 55);
+
+            // สะพาน ล่าง
+            bLongHorizontal13 = new Sprite(scene, "img/empty.png", 200, 1);
+            bLongHorizontal13.setSpeed(0);
+            bLongHorizontal13.setPosition(662, 120);
+
+            // ต้นไม้
+            bLongHorizontal14 = new Sprite(scene, "img/empty.png", 70, 1);
+            bLongHorizontal14.setSpeed(0);
+            bLongHorizontal14.setPosition(860, 170);
+
+            // หลังคาบ้าน
+            bLongHorizontal15 = new Sprite(scene, "img/empty.png", 140, 1);
+            bLongHorizontal15.setSpeed(0);
+            bLongHorizontal15.setPosition(800, 340);
+
+            bLongHorizontal16 = new Sprite(scene, "img/empty.png", 100, 1);
+            bLongHorizontal16.setSpeed(0);
+            bLongHorizontal16.setPosition(560, 400);
+
+            // ทางออก แกะ
+            bLongHorizontal17 = new Sprite(scene, "img/empty.png", 45, 1);
+            bLongHorizontal17.setSpeed(0);
+            bLongHorizontal17.setPosition(480, 390);
+
+            bLongHorizontal18 = new Sprite(scene, "img/empty.png", 140, 1);
+            bLongHorizontal18.setSpeed(0);
+            bLongHorizontal18.setPosition(350, 400);
+
+
+            bLongHorizontal19 = new Sprite(scene, "img/empty.png", 50, 1);
+            bLongHorizontal19.setSpeed(0);
+            bLongHorizontal19.setPosition(150, 530);
+
+            bLongHorizontal20 = new Sprite(scene, "img/empty.png", 50, 1);
+            bLongHorizontal20.setSpeed(0);
+            bLongHorizontal20.setPosition(40, 450);
+
+            bLongHorizontal21 = new Sprite(scene, "img/empty.png", 90, 1);
+            bLongHorizontal21.setSpeed(0);
+            bLongHorizontal21.setPosition(770, 530);
+
+            bLongHorizontal22 = new Sprite(scene, "img/empty.png", 20, 1);
+            bLongHorizontal22.setSpeed(0);
+            bLongHorizontal22.setPosition(880, 530);
+
+            //ปะรตู บ้าน 
+            bLongHorizontal23 = new Sprite(scene, "img/empty.png", 20, 1);
+            bLongHorizontal23.setSpeed(0);
+            bLongHorizontal23.setPosition(845, 535);
+
+            bLongHorizontal24 = new Sprite(scene, "img/empty.png", 100, 1);
+            bLongHorizontal24.setSpeed(0);
+            bLongHorizontal24.setPosition(60, 495);
+
+            // บรรได ขึ้น ภูเขา
+            bLongHorizontal25 = new Sprite(scene, "img/empty.png", 120, 1);
+            bLongHorizontal25.setSpeed(0);
+            bLongHorizontal25.setPosition(200, 260);
+
+            // เปล บน
+            bLongHorizontal26 = new Sprite(scene, "img/empty.png", 25, 1);
+            bLongHorizontal26.setSpeed(0);
+            bLongHorizontal26.setPosition(165, 56);
+
+            // เปล ล่าง
+            bLongHorizontal27 = new Sprite(scene, "img/empty.png", 30, 1);
+            bLongHorizontal27.setSpeed(0);
+            bLongHorizontal27.setPosition(160, 115);
+
+            // หลุม
+            bLongHorizontal28 = new Sprite(scene, "img/empty.png", 65, 1);
+            bLongHorizontal28.setSpeed(0);
+            bLongHorizontal28.setPosition(450, 130);
+
+            // แม่น้ำ
+            bLongHorizontal29 = new Sprite(scene, "img/empty.png", 200, 1);
+            bLongHorizontal29.setSpeed(0);
+            bLongHorizontal29.setPosition(650, 190);
+
+            // สะดุด หิน
+            bLongHorizontal30 = new Sprite(scene, "img/empty.png", 20, 1);
+            bLongHorizontal30.setSpeed(0);
+            bLongHorizontal30.setPosition(745, 300);
+
+            // บรรได ลง ภูเขา
+            bLongHorizontal31 = new Sprite(scene, "img/empty.png", 20, 1);
+            bLongHorizontal31.setSpeed(0);
+            bLongHorizontal31.setPosition(195, 220);
+
+            // ป้าย
+            bLongHorizontal32 = new Sprite(scene, "img/empty.png", 30, 1);
+            bLongHorizontal32.setSpeed(0);
+            bLongHorizontal32.setPosition(430, 430);
+
+            // check หมี
+            bLongHorizontal33 = new Sprite(scene, "img/empty.png", 105, 1);
+            bLongHorizontal33.setSpeed(0);
+            bLongHorizontal33.setPosition(840, 115);
+
+            // check mom
+            bLongHorizontal34 = new Sprite(scene, "img/empty.png", 1, 30);
+            bLongHorizontal34.setSpeed(0);
+            bLongHorizontal34.setPosition(272, 375);
+
+            // check mom
+            bLongHorizontal35 = new Sprite(scene, "img/empty.png", 1, 30);
+            bLongHorizontal35.setSpeed(0);
+            bLongHorizontal35.setPosition(142, 375);
+
+            // ขอบ ซ้าย
+            bLongHorizontal36 = new Sprite(scene, "img/empty.png", 1, 600);
+            bLongHorizontal36.setSpeed(0);
+            bLongHorizontal36.setPosition(2, 300);
+
+            // ขอบ ขวา
+            bLongHorizontal37 = new Sprite(scene, "img/empty.png", 1, 600);
+            bLongHorizontal37.setSpeed(0);
+            bLongHorizontal37.setPosition(897, 300);
+
+            //  หลุม 5 1
+            bLongHorizontal38 = new Sprite(scene, "img/empty.png", 1, 20);
+            bLongHorizontal38.setSpeed(0);
+            bLongHorizontal38.setPosition(475, 455);
+
+            //  หลุม 5 2
+            bLongHorizontal39 = new Sprite(scene, "img/empty.png", 1, 20);
+            bLongHorizontal39.setSpeed(0);
+            bLongHorizontal39.setPosition(475, 570);
+
+            //  หลุม 5 3
+            bLongHorizontal40 = new Sprite(scene, "img/empty.png", 1, 20);
+            bLongHorizontal40.setSpeed(0);
+            bLongHorizontal40.setPosition(475, 490);
+
+            // หลุม 5 4
+            bLongHorizontal41 = new Sprite(scene, "img/empty.png", 1, 20);
+            bLongHorizontal41.setSpeed(0);
+            bLongHorizontal41.setPosition(400, 530);
+
+            // หลุม 5 5
+            bLongHorizontal42 = new Sprite(scene, "img/empty.png", 20, 1);
+            bLongHorizontal42.setSpeed(0);
+            bLongHorizontal42.setPosition(435, 490);
+
+
+
+            bLongVertical = new Sprite(scene, "img/empty.png", 1, 200);
+            bLongVertical.setSpeed(0);
+            bLongVertical.setPosition(140, 280);
+
+            // รั้ว ซ้าย
+            bLongVertical1 = new Sprite(scene, "img/empty.png", 1, 310);
+            bLongVertical1.setSpeed(0);
+            bLongVertical1.setPosition(275, 250);
+
+            bLongVertical2 = new Sprite(scene, "img/empty.png", 1, 140);
+            bLongVertical2.setSpeed(0);
+            bLongVertical2.setPosition(70, 60);
+
+            bLongVertical3 = new Sprite(scene, "img/empty.png", 1, 90);
+            bLongVertical3.setSpeed(0);
+            bLongVertical3.setPosition(385, 50);
+
+            //กั้น แม่น้ำ บนซ้ายสุด
+            bLongVertical4 = new Sprite(scene, "img/empty.png", 1, 40);
+            bLongVertical4.setSpeed(0);
+            bLongVertical4.setPosition(530, 25);
+
+            //กั้น แม่น้ำ ล่างซ้ายสุด
+            bLongVertical5 = new Sprite(scene, "img/empty.png", 1, 80);
+            bLongVertical5.setSpeed(0);
+            bLongVertical5.setPosition(550, 160);
+
+            //กั้น แม่น้ำ ล่างขวาสุด
+            bLongVertical6 = new Sprite(scene, "img/empty.png", 1, 75);
+            bLongVertical6.setSpeed(0);
+            bLongVertical6.setPosition(760, 155);
+
+            bLongVertical7 = new Sprite(scene, "img/empty.png", 1, 50);
+            bLongVertical7.setSpeed(0);
+            bLongVertical7.setPosition(815, 35);
+
+            // ต้นไม้ 
+            bLongVertical8 = new Sprite(scene, "img/empty.png", 1, 150);
+            bLongVertical8.setSpeed(0);
+            bLongVertical8.setPosition(825, 245);
+
+
+            // บ้าน ซ้าย
+            bLongVertical9 = new Sprite(scene, "img/empty.png", 1, 195);
+            bLongVertical9.setSpeed(0);
+            bLongVertical9.setPosition(730, 440);
+
+            // รั้ว ขวา
+            bLongVertical10 = new Sprite(scene, "img/empty.png", 1, 210);
+            bLongVertical10.setSpeed(0);
+            bLongVertical10.setPosition(607, 300);
+
+            // ตอไม้
+            bLongVertical11 = new Sprite(scene, "img/empty.png", 1, 30);
+            bLongVertical11.setSpeed(0);
+            bLongVertical11.setPosition(580, 420);
+
+            bLongVertical12 = new Sprite(scene, "img/empty.png", 1, 30);
+            bLongVertical12.setSpeed(0);
+            bLongVertical12.setPosition(450, 420);
+
+            bLongVertical13 = new Sprite(scene, "img/empty.png", 1, 30);
+            bLongVertical13.setSpeed(0);
+            bLongVertical13.setPosition(350, 420);
+
+            bLongVertical14 = new Sprite(scene, "img/empty.png", 1, 30);
+            bLongVertical14.setSpeed(0);
+            bLongVertical14.setPosition(410, 420);
+
+            bLongVertical15 = new Sprite(scene, "img/empty.png", 1, 60);
+            bLongVertical15.setSpeed(0);
+            bLongVertical15.setPosition(180, 560);
+
+            bLongVertical16 = new Sprite(scene, "img/empty.png", 1, 60);
+            bLongVertical16.setSpeed(0);
+            bLongVertical16.setPosition(75, 420);
+
+            bLongVertical17 = new Sprite(scene, "img/empty.png", 1, 60);
+            bLongVertical17.setSpeed(0);
+            bLongVertical17.setPosition(120, 520);
+
+            // หิน ล้ม
+            bLongVertical18 = new Sprite(scene, "img/empty.png", 1, 10);
+            bLongVertical18.setSpeed(0);
+            bLongVertical18.setPosition(380, 160);
+
+
+            // ขอบ บน
+            bLongVertical21 = new Sprite(scene, "img/empty.png", 900, 1);
+            bLongVertical21.setSpeed(0);
+            bLongVertical21.setPosition(450, 2);
+
+            // ขอบ ล่าง
+            bLongVertical22 = new Sprite(scene, "img/empty.png", 900, 1);
+            bLongVertical22.setSpeed(0);
+            bLongVertical22.setPosition(450, 597);
+
+            bLongVertical23 = new Sprite(scene, "img/empty.png", 35, 1);
+            bLongVertical23.setSpeed(0);
+            bLongVertical23.setPosition(325, 450);
+
+            bLongVertical24 = new Sprite(scene, "img/empty.png", 35, 1);
+            bLongVertical24.setSpeed(0);
+            bLongVertical24.setPosition(325, 585);
+
+            // หลุม หล่น
+            pit = new Sprite(scene, "img/pit.png", 45, 45);
+            pit.setSpeed(0);
+            pit.setPosition(365, 160);
+            pit.hide();
+
+            // หลุม หล่น 2  บ้าน
+            pit2 = new Sprite(scene, "img/pit.png", 45, 45);
+            pit2.setSpeed(0);
+            pit2.setPosition(745, 290);
+            pit2.hide();
+
+            //หลุม ไม่มีหิน
+            pit3 = new Sprite(scene, "img/pit.png", 110, 40);
+            pit3.setSpeed(0);
+            pit3.setPosition(455, 135);
+            pit3.hide();
+
+            pit4 = new Sprite(scene, "img/pit.png", 45, 45);
+            pit4.setSpeed(0);
+            pit4.setPosition(475, 455);
+            pit4.hide();
+
+            pit5 = new Sprite(scene, "img/pit.png", 45, 45);
+            pit5.setSpeed(0);
+            pit5.setPosition(475, 570);
+            pit5.hide();
+
+            pit6 = new Sprite(scene, "img/pit.png", 45, 45);
+            pit6.setSpeed(0);
+            pit6.setPosition(475, 490);
+            pit6.hide();
+
+            pit7 = new Sprite(scene, "img/pit.png", 45, 45);
+            pit7.setSpeed(0);
+            pit7.setPosition(400, 530);
+            pit7.hide();
+
+            pit8 = new Sprite(scene, "img/pit.png", 45, 45);
+            pit8.setSpeed(0);
+            pit8.setPosition(435, 490);
+            pit8.hide();
+
+            //ice cream
+            iceCream = new Sprite(scene, "img/itim2.png", 42, 27);
+            iceCream.setSpeed(0);
+            iceCream.setPosition(632, 330);
+
+
+            // เปล ข้าง
+            bLongVertical19 = new Sprite(scene, "img/empty.png", 1, 30);
+            bLongVertical19.setSpeed(0);
+            bLongVertical19.setPosition(187, 90);
+
+            // ต้นไม้ เถาวัลย์
+            bLongVertical20 = new Sprite(scene, "img/empty.png", 1, 85);
+            bLongVertical20.setSpeed(0);
+            bLongVertical20.setPosition(332, 50);
+
+            // message Baby บันได
+            messageSC = new Sprite(scene, "img/message22.png", 870, 200);
+            messageSC.setSpeed(0);
+            messageSC.setPosition(450, 485);
+            messageSC.hide();
+
+            // message Baby หลุม
+            messagePit = new Sprite(scene, "img/messagePit.png", 870, 200);
+            messagePit.setSpeed(0);
+            messagePit.setPosition(450, 485);
+            messagePit.hide();
+
+            // message Baby Bear
+            messageBear = new Sprite(scene, "img/messageBear.png", 870, 200);
+            messageBear.setSpeed(0);
+            messageBear.setPosition(450, 485);
+            messageBear.hide();
+
+            // message Baby Mom
+            messageMom = new Sprite(scene, "img/messageMom.png", 870, 200);
+            messageMom.setSpeed(0);
+            messageMom.setPosition(450, 485);
+            messageMom.hide();
+
+            // message Baby Sheep
+            messageSheep = new Sprite(scene, "img/messageSheep.png", 870, 200);
+            messageSheep.setSpeed(0);
+            messageSheep.setPosition(450, 485);
+            messageSheep.hide();
+
+            // message Baby ตกน้ำ
+            messageW = new Sprite(scene, "img/messageW.png", 870, 200);
+            messageW.setSpeed(0);
+            messageW.setPosition(450, 485);
+            messageW.hide();
+
+            // message Baby ตกน้ำ
+            messageIceCream = new Sprite(scene, "img/messageIceCream.png", 870, 200);
+            messageIceCream.setSpeed(0);
+            messageIceCream.setPosition(450, 485);
+            messageIceCream.hide();
+
+            // message Girl
+            messageGirl = new Sprite(scene, "img/messageGirl.png", 870, 200);
+            messageGirl.setSpeed(0);
+            messageGirl.setPosition(450, 485);
+            messageGirl.hide();
+
+            // ต้นไม้ ผึ้ง
+            tree = new Sprite(scene, "img/treeBee2.png", 150, 200);
+            tree.setSpeed(0);
+            tree.setPosition(872, 192)
+
+
+
+
+
+
+            scene.start();
+        }
+
+
+        function Message() {
+            tMessage = new Sprite(scene, "img/message.png", 870, 200)
+            tMessage.setSpeed(0);
+            tMessage.setPosition(450, 485);
+            tMessage.hide();
+
+            return tMessage;
+        }
+
+
+        function checkCollision() {
+
+            // die 
+            if (baby.collidesWith(bLongVertical18) || baby.collidesWith(bLongHorizontal30) ||
+                baby.collidesWith(bLongHorizontal28) || baby.collidesWith(bLongHorizontal12) ||
+                baby.collidesWith(bLongHorizontal13) ||
+                baby.collidesWith(bLongHorizontal11) || baby.collidesWith(bLongHorizontal17) ||
+                baby.collidesWith(bLongHorizontal31) || baby.collidesWith(iceCream) ||
+                baby.collidesWith(bLongHorizontal38) || baby.collidesWith(bLongHorizontal39) ||
+                baby.collidesWith(bLongHorizontal40) || baby.collidesWith(bLongHorizontal41)  ||
+                baby.collidesWith(bLongHorizontal42)) {
+
+                if (baby.collidesWith(iceCream)) {
+                    iceCream.hide();
+                    messageIceCream.show();
+                }
+
+
+                if (baby.collidesWith(bLongHorizontal31)) {
+                    messageSC.show();
+
+                }
+
+                if (baby.collidesWith(bLongVertical18)) {
+                    pit.show();
+                    messagePit.show();
+                    baby.hide();
+
+                }
+
+                if (baby.collidesWith(bLongHorizontal30)) {
+                    pit2.show();
+                    messagePit.show();
+                    baby.hide();
+                    pit2.show();
+                }
+                if (baby.collidesWith(bLongHorizontal38)) {
+                    pit4.show();
+                    messagePit.show();
+                    baby.hide();
+
+                }
+                if (baby.collidesWith(bLongHorizontal39)) {
+                    pit5.show();
+                    messagePit.show();
+                    baby.hide();
+
+                }
+                if (baby.collidesWith(bLongHorizontal40)) {
+                    pit6.show();
+                    messagePit.show();
+                    baby.hide();
+
+                }
+
+                if (baby.collidesWith(bLongHorizontal41)) {
+                    pit7.show();
+                    messagePit.show();
+                    baby.hide();
+
+                }
+                if (baby.collidesWith(bLongHorizontal42)) {
+                    pit8.show();
+                    messagePit.show();
+                    baby.hide();
+
+                }
+
+                if (baby.collidesWith(bLongHorizontal11) || baby.collidesWith(bLongHorizontal17)) {
+                    messageSheep.show();
+                }
+                if (baby.collidesWith(bLongHorizontal12) || baby.collidesWith(bLongHorizontal13)) {
+                    messageW.show();
+                    baby.hide();
+
+                }
+                if (baby.collidesWith(bLongHorizontal28)) {
+                    messagePit.show();
+                    pit3.show();
+                    baby.hide();
+
+                }
+
+                baby.x -= baby.dx;
+                baby.y -= baby.dy;
+
+                document.getElementById("reset").style.display = "block";
+                updateScore();
+
+                baby.pause();
+            }
+
+
+            if (baby.collidesWith(bLongHorizontal33)) {
+                tBear.show();
+                tBear.playAnimation();
+                tBear.setSpeed(2);
+                tBear.setMoveAngle(0);
+                tBear.setCurrentCycle("up");
+
+                if (baby.collidesWith(bear)) {
+                    baby.x -= baby.dx;
+                    baby.y -= baby.dy;
+
+                    bear.x -= bear.dx;
+                    bear.y -= bear.dy;
+                  
+                    bear.setSpeed(0);
+                    bear.pauseAnimation();
+                    messageBear.show();
+                    baby.hide();
+                
+                    document.getElementById("reset").style.display = "block";
+                    baby.pause();
+                    updateScore();
+
+                }
+                
+
+
+            }
+
+            if (tGirl.collidesWith(bLongVertical23)) {
+                tGirl.playAnimation();
+                tGirl.setSpeed(2);
+                tGirl.setMoveAngle(180);
+                tGirl.setCurrentCycle("down");
+
+            }
+            if (tGirl.collidesWith(bLongVertical24)) {
+                tGirl.playAnimation();
+                tGirl.setSpeed(2);
+                tGirl.setMoveAngle(0);
+                tGirl.setCurrentCycle("up");
+
+            }
+            if (tMom.collidesWith(bLongHorizontal34)) {
+                tMom.playAnimation();
+                tMom.setSpeed(2);
+                tMom.setMoveAngle(270);
+                tMom.setCurrentCycle("left");
+            }
+            if (tMom.collidesWith(bLongHorizontal35)) {
+                tMom.playAnimation();
+                tMom.setSpeed(2);
+                tMom.setMoveAngle(90);
+                tMom.setCurrentCycle("right");
+            }
+
+            if (baby.collidesWith(tMom)) {
+                baby.x -= baby.dx;
+                baby.y -= baby.dy;
+                mom.x -= mom.dx;
+                mom.y -= mom.dy;
+                mom.setSpeed(0);
+                baby.pause();
+                scene.stop();
+
+
+                messageMom.show();
+                document.getElementById("playAgain").style.display = "block";
+
+            }
+
+
+            if (baby.collidesWith(tGirl)) {
+                baby.x -= baby.dx;
+                baby.y -= baby.dy;
+                girl.x -= girl.dx;
+                girl.y -= girl.dy;
+                baby.pause();
+                updateScore();
+                baby.hide();
+
+                messageGirl.show();
+                document.getElementById("reset").style.display = "block";
+
+            }
+
+            if (bear.collidesWith(bLongVertical21)) {
+                bear.hide();
+            }
+
+
+
+
+            if (baby.collidesWith(bLongVertical) || baby.collidesWith(bLongHorizontal) ||
+                baby.collidesWith(bLongVertical1) || baby.collidesWith(bLongVertical2) ||
+                baby.collidesWith(bLongVertical3) || baby.collidesWith(bLongVertical4) ||
+                baby.collidesWith(bLongVertical5) || baby.collidesWith(bLongVertical6) ||
+                baby.collidesWith(bLongVertical7) || baby.collidesWith(bLongVertical8) ||
+                baby.collidesWith(bLongVertical9) || baby.collidesWith(bLongVertical10) ||
+                baby.collidesWith(bLongVertical11) || baby.collidesWith(bLongVertical12) ||
+                baby.collidesWith(bLongVertical13) || baby.collidesWith(bLongVertical14) ||
+                baby.collidesWith(bLongVertical15) || baby.collidesWith(bLongVertical16) ||
+                baby.collidesWith(bLongVertical17) || baby.collidesWith(bLongVertical21) ||
+                baby.collidesWith(bLongVertical22) ||
+                baby.collidesWith(bLongHorizontal1) ||
+                baby.collidesWith(bLongHorizontal2) || baby.collidesWith(bLongHorizontal3) ||
+                baby.collidesWith(bLongHorizontal4) || baby.collidesWith(bLongHorizontal5) ||
+                baby.collidesWith(bLongHorizontal6) || baby.collidesWith(bLongHorizontal7) ||
+                baby.collidesWith(bLongHorizontal8) || baby.collidesWith(bLongHorizontal9) ||
+                baby.collidesWith(bLongHorizontal10) || baby.collidesWith(bLongHorizontal14) ||
+                baby.collidesWith(bLongHorizontal15) || baby.collidesWith(bLongHorizontal16) ||
+                baby.collidesWith(bLongHorizontal18) || baby.collidesWith(bLongHorizontal19) ||
+                baby.collidesWith(bLongHorizontal20) || baby.collidesWith(bLongHorizontal21) ||
+                baby.collidesWith(bLongHorizontal22) || baby.collidesWith(bLongHorizontal23) ||
+                baby.collidesWith(bLongHorizontal24) || baby.collidesWith(bLongHorizontal25) ||
+                baby.collidesWith(bLongHorizontal29) || baby.collidesWith(bLongHorizontal32) ||
+                baby.collidesWith(bLongVertical20) || baby.collidesWith(bLongHorizontal36) ||
+                baby.collidesWith(bLongHorizontal32)
+
+            ) {
+                baby.x -= baby.dx;
+                baby.y -= baby.dy;
+
+                baby.pause();
+
+            }
+        }
+
+        function Girl() {
+            tGirl = new Sprite(scene, "img/girl2.png", 42, 42);
+            tGirl.loadAnimation(357, 189, 44.62, 46.7);
+            tGirl.generateAnimationCycles();
+            tGirl.renameCycles(new Array("down", "left", "right", "up"));
+            tGirl.setAnimationSpeed(850);
+            tGirl.setSpeed(2);
+            tGirl.setPosition(320, 520);
+            tGirl.setCurrentCycle("down");
+            tGirl.setMoveAngle(180);
+
+            return tGirl;
+        }
+
+        function Mom() {
+            tMom = new Sprite(scene, "img/momP.png", 40, 40);
+            tMom.loadAnimation(380, 150, 47.5, 46.5);
+            tMom.generateAnimationCycles();
+            tMom.renameCycles(new Array("down", "left", "right", "up"));
+            tMom.setAnimationSpeed(850);
+            tMom.setSpeed(2);
+            tMom.setPosition(265, 350);
+
+            tMom.playAnimation();
+
+            return tMom;
+
+        }
+
+
+
+        function Bear() {
+            tBear = new Sprite(scene, "img/bear.png", 35, 35)
+            tBear.loadAnimation(388, 192, 48.5, 48);
+            tBear.generateAnimationCycles();
+            tBear.renameCycles(new Array("down", "left", "right", "up"));
+            tBear.setAnimationSpeed(500);
+            tBear.setSpeed(0);
+            tBear.setPosition(850, 175);
+            tBear.pauseAnimation();
+            tBear.setCurrentCycle("up");
+
+            return tBear;
+
+        }
+
+        function Baby() {
+            tBaby = new Sprite(scene, "img/baby.png", 35, 30);
+            //tBaby.loadAnimation(wigth, height, wigth/8, height/4);
+            tBaby.loadAnimation(312, 169, 39, 42.25);
+            tBaby.generateAnimationCycles();
+            tBaby.renameCycles(new Array("down", "left", "right", "up"));
+            tBaby.setAnimationSpeed(550);
+            tBaby.setSpeed(0);
+            tBaby.setPosition(160, 82);
+            tBaby.pauseAnimation();
+
+            tBaby.pause = function () {
+                tBaby.setSpeed(0);
+                tBaby.setCurrentCycle("down");
+                tBaby.pauseAnimation();
+            }
+
+            tBaby.checkKeys = function () {
+                if (keysDown[K_LEFT]) {
+                    tBaby.playAnimation();
+                    // tBaby.setSpeed(2);
+                    tBaby.setSpeed(3);
+                    tBaby.setMoveAngle(270);
+                    tBaby.setCurrentCycle("left");
+                }
+
+                if (keysDown[K_RIGHT]) {
+                    tBaby.playAnimation();
+                    tBaby.setSpeed(3);
+                    tBaby.setMoveAngle(90);
+                    tBaby.setCurrentCycle("right");
+                }
+
+                if (keysDown[K_UP]) {
+                    tBaby.playAnimation();
+                    tBaby.setSpeed(3);
+                    tBaby.setMoveAngle(0);
+                    tBaby.setCurrentCycle("up");
+                }
+
+                if (keysDown[K_DOWN]) {
+                    tBaby.playAnimation();
+                    tBaby.setSpeed(3);
+                    tBaby.setMoveAngle(180);
+                    tBaby.setCurrentCycle("down");
+                }
+            }
+
+            tBaby.pause();
+            return tBaby;
+        }
+
+        function update() {
+            scene.clear();
+            baby.checkKeys();
+            checkCollision();
+            bg.update();
+
+            pit2.update();
+
+            bLongHorizontal.update();
+            bLongHorizontal1.update();
+            bLongHorizontal2.update();
+            bLongHorizontal3.update();
+            bLongHorizontal4.update();
+            bLongHorizontal5.update();
+            bLongHorizontal6.update();
+            bLongHorizontal7.update();
+            bLongHorizontal8.update();
+            bLongHorizontal9.update();
+            bLongHorizontal10.update();
+            bLongHorizontal11.update();
+            bLongHorizontal12.update();
+            bLongHorizontal13.update();
+            bLongHorizontal14.update();
+            bLongHorizontal15.update();
+            bLongHorizontal16.update();
+            bLongHorizontal17.update();
+            bLongHorizontal18.update();
+            bLongHorizontal19.update();
+            bLongHorizontal20.update();
+            bLongHorizontal21.update();
+            bLongHorizontal22.update();
+            bLongHorizontal23.update();
+            bLongHorizontal24.update();
+            bLongHorizontal25.update();
+            bLongHorizontal26.update();
+            bLongHorizontal27.update();
+            bLongHorizontal28.update();
+            bLongHorizontal29.update();
+            bLongHorizontal30.update();
+            bLongHorizontal31.update();
+            bLongHorizontal32.update();
+            bLongHorizontal33.update();
+            bLongHorizontal34.update();
+            bLongHorizontal35.update();
+            bLongHorizontal36.update();
+            bLongHorizontal37.update();
+
+
+            pit.update();
+            pit3.update();
+            pit4.update();
+            pit5.update();
+            pit6.update();
+            pit7.update();
+            pit8.update();
+            iceCream.update();
+
+            bLongHorizontal38.update();
+            bLongHorizontal39.update();
+            bLongHorizontal40.update();
+            bLongHorizontal41.update();
+            bLongHorizontal42.update();
+
+            bLongVertical.update();
+            bLongVertical1.update();
+            bLongVertical2.update();
+            bLongVertical3.update();
+            bLongVertical4.update();
+            bLongVertical5.update();
+            bLongVertical6.update();
+            bLongVertical7.update();
+            bLongVertical8.update();
+            bLongVertical9.update();
+            bLongVertical10.update();
+            bLongVertical11.update();
+            bLongVertical12.update();
+            bLongVertical13.update();
+            bLongVertical14.update();
+            bLongVertical15.update();
+            bLongVertical16.update();
+            bLongVertical17.update();
+            bLongVertical18.update();
+            bLongVertical19.update();
+            bLongVertical20.update();
+            bLongVertical21.update();
+            bLongVertical22.update();
+            bLongVertical23.update();
+            bLongVertical24.update();
+
+            tMom.update();
+            tGirl.update();
+            tBaby.update();
+            tBear.update();
+            message.update();
+            messageSC.update();
+            messagePit.update();
+            messageBear.update();
+            messageMom.update();
+            messageGirl.update();
+            messageSheep.update();
+            messageW.update();
+            messageIceCream.update();
+            tree.update();
+        }
+
+        function restart() {
+            baby.setPosition(160, 82);
+            baby.show();
+            bear.setPosition(850, 175);
+            document.getElementById("reset").style.display = "none";
+            iceCream.show();
+            pit.hide();
+            pit2.hide();
+            pit3.hide();
+            pit4.hide();
+            pit5.hide();
+            pit6.hide();
+            pit7.hide();
+            pit8.hide();
+            bear.hide();
+            messageSC.hide();
+            messagePit.hide();
+            messageBear.hide();
+            messageMom.hide();
+            messageSheep.hide();
+            messageGirl.hide();
+            messageW.hide();
+            messageIceCream.hide();
+
+        }
+
+        function playAgain() {
+            document.location.href = ""
+        }
+
+        function updateScore() {
+            score += 1;
+            score1 = document.getElementById('score');
+            score1.innerHTML = "Score: " + score;
+        }
+
+    </script>
+</head>
+
+<body onload="init()">
+    <div id=score style="font-size: 25px">Score: 0</div>
+    <div>
+        <button type="button" id="reset" onclick="restart()">
+            เล่นอีกครั้ง
+        </button>
+        <button type="button" id="playAgain" onclick="playAgain()">
+            เริ่มต้นใหม่
+        </button>
+    </div>
+
+
+</body>
+
+</html>
